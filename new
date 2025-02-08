@@ -1,4 +1,4 @@
-_G.enable = false
+_G.enable = true
 _G.color = Color3.fromRGB(61, 255, 133)
 _G.toggle_keybind = "u" -- enable tracer and disable
 _G.swith_Gay = 't' -- press t and u will see a noti on the user ur tracer is on 
@@ -52,7 +52,7 @@ end
 
 mouse.KeyDown:Connect(function(z)
     if z == _G.toggle_keybind then
-        if _G.enable == false then
+        if _G.enable == true then
             _G.enable = true
             sendnotifi("Enabled")
         elseif _G.enable == true then
