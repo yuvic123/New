@@ -9,15 +9,11 @@ if game.PlaceId == 2788229376 then
 end
 
 
-
-
 ---------------------------------------------------------------
 local rs = game:GetService("RunService")
 local localPlayer = game.Players.LocalPlayer
 local mouse = localPlayer:GetMouse()
 local target;
-
-
 
 function getgun()
     for i,v in pairs(target.Character:GetChildren()) do
@@ -28,22 +24,16 @@ function getgun()
 end
 
 function sendnotifi(message)
-
-
     game.StarterGui:SetCore("SendNotification", {
         Title = "Aim Viewer";
         Text = message;
         Duration = "2.5";
     })
-
-    end
-
+end
 
 function get_closet()
     local a = math.huge
     local b;
-
-
 
     for i, v in pairs(game.Players:GetPlayers()) do
         if v ~= localPlayer and v.Character and v.Character:FindFirstChild("Head") and  v.Character:FindFirstChild("HumanoidRootPart")  then
@@ -60,7 +50,6 @@ function get_closet()
     return b
 end
 
---- 
 mouse.KeyDown:Connect(function(z)
     if z == _G.toggle_keybind then
         if _G.enable == false then
@@ -71,7 +60,7 @@ mouse.KeyDown:Connect(function(z)
             sendnotifi("Disabled")
         end
     end
-end) -- .gg/Azure
+end)
 
 mouse.KeyDown:Connect(function(z)
     if z == _G.swith_Gay then
@@ -79,7 +68,6 @@ mouse.KeyDown:Connect(function(z)
         sendnotifi("targeting: "..tostring(target.Name))
     end
 end)
----
 
 -- minified it 
 local a=Instance.new("Beam")a.Segments=1;a.Width0=0.2;a.Width1=0.2;a.Color=ColorSequence.new(_G.color)a.FaceCamera=true;local b=Instance.new("Attachment")local c=Instance.new("Attachment")a.Attachment0=b;a.Attachment1=c;a.Parent=workspace.Terrain;b.Parent=workspace.Terrain;c.Parent=workspace.Terrain
@@ -93,18 +81,17 @@ task.spawn(function()
         return
     end
 
-
- 
-
-
-
-    if _G.enable  and getgun() and target.Character:FindFirstChild("BodyEffects") and target.Character:FindFirstChild("Head")  then
+    if _G.enable and getgun() and target.Character:FindFirstChild("BodyEffects") and target.Character:FindFirstChild("Head") then
         a.Enabled = true
-        b.Position =  target.Character:FindFirstChild("Head").Position
-        c.Position = target.Character.BodyEffects[_G.method].Value ---edit this if some random ass game got some weird ass other name :palingface
+        b.Position = target.Character:FindFirstChild("Head").Position
+        c.Position = target.Character.BodyEffects[_G.method].Value
     else
         a.Enabled = false
     end
 
     end)
 end)
+
+-- Automatically enable the keybind "u" upon script execution
+_G.enable = true
+sendnotifi("Enabled")
